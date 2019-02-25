@@ -1,0 +1,48 @@
+<ion-header  no-border>
+
+  <ion-navbar transparent>
+    <ion-title>grades</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="back"  padding>
+    <div class="mbsc-form-group">
+        <div class="mbsc-form-group-title">Category</div>
+         <!-- <label>
+            <ion-checkbox color="primary" [(ngModel)]="courses.subject0">  </ion-checkbox>
+
+        </label>
+        <ion-item class="input1" >
+            <ion-label style="color:rgb(61, 140, 243)" floating>Full Name</ion-label>
+            <ion-checkbox color="primary" [(ngModel)]="courses.subject0">  </ion-checkbox>
+          </ion-item>  
+
+          <p style="color:rgb(92, 16, 136);"> Subject: {{ (profileData | async)?.subject0 }} </p>
+    </div>/ --> 
+
+<!-- 
+  <ion-list radio-group [(ngModel)]="courses.subject0"  radio-group>
+    <ion-list-header>
+      Auto Manufacturers
+    </ion-list-header>
+  
+    <ion-item  >
+      <ion-label>subject</ion-label>
+      <ion-radio value="subject" >  </ion-radio> 
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Studebaker</ion-label>
+      <ion-radio value="studebaker"></ion-radio>
+    </ion-item>
+  </ion-list> -->
+  <button ion-button (click)="Courses()" style="color: rgb(207, 32, 32)">Save</button>
+
+  <ion-list>
+  <ion-item *ngFor="let entry of subjectarr">
+    <ion-label>{{entry.val}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
