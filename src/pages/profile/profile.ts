@@ -21,13 +21,16 @@ import { Observable } from 'rxjs';
 export class ProfilePage {
  
   profData: AngularFireObject<profile>
-
   profileData: Observable<any>
 
  fullName;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , private afDatabase:AngularFireDatabase,
-    private toast :ToastController,private afAuth :AngularFireAuth,private camera: Camera ) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams ,
+    private afDatabase:AngularFireDatabase,
+    private toast :ToastController,
+    private afAuth :AngularFireAuth,
+    private camera: Camera ) {
 
       
       if (!firebase.apps.length) {
@@ -75,7 +78,7 @@ export class ProfilePage {
       }
       
   getDataFromFireBase(){
-
+    
   this.afAuth.authState.take(1).subscribe(data =>{
     if (data && data.email && data.uid){
     this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();

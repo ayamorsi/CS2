@@ -15,8 +15,6 @@ import { AngularFireObject , AngularFireList} from  'angularfire2/database';
   templateUrl: 'courses.html',
 })
 export class CoursesPage implements OnInit {
-  profData: AngularFireList<courses>
-  profileData: Observable<any>
   subjectarr: any [];
   isChecked: any;
   selectedArray : any [];
@@ -57,15 +55,15 @@ export class CoursesPage implements OnInit {
        if (this.subjectarr[i].isChecked == true){
         this.selectedArray.push(this.subjectarr[i]);
     }
-    for (let j =0; j < this.selectedArray.length; j++){
-      if (this.selectedArray.length > 5) {
-        this.subjectarr[i].isChecked == false 
-      }
-    }
+    // for (let j =0; j < this.selectedArray.length; j++){
+    //   if (this.selectedArray.length > 5) {
+    //     this.subjectarr[i].isChecked == false 
+    //   }
+    // }
     
   }
       this.afAuth.authState.take(1).subscribe(auth =>{
-        this.afDatabase.list(`courses/${auth.uid}`).push(this.selectedArray)
+        this.afDatabase.object(`courses/${auth.uid}`).update(this.selectedArray)
         .then(()=> this.navCtrl.push(TimetablePage))
          })
   }

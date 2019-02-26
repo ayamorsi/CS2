@@ -11,6 +11,30 @@ page-profile {
     color: rgb(166, 68, 247) !important;
   } 
 
+  .bar-header {
+    color: rgb(166, 68, 247);
+    text-align: left;
+  }
+  .pname{
+    color:rgb(92, 16, 136); 
+    text-align: left;
+    display: inline-block;
+  }
+  .pgender{
+    color:rgb(92, 16, 136); 
+    text-align: center;
+    display: inline-block;
+    margin-left: 170px;
+
+  }
+  .plevel{
+    color:rgb(92, 16, 136);
+    display: inline-block;
+
+  }
+.pdiv{
+    text-align: center;
+}
   
   .avatar-upload {
     position: relative;

@@ -23,9 +23,16 @@
         </div>
     </div>
 </div>
+<div class="bar-header">
+    <h3 class="title">student information</h3>
+  </div>
+  <br> <br>
+<div class="pdiv">  
+<p class= "pname"> Fullname: {{ (profileData | async)?.fullName }} </p>
 
-<p style="color:rgb(92, 16, 136);"> Fullname: {{ (profileData | async)?.fullName }} </p>
-<p style="color:rgb(92, 16, 136);"> Gender: {{ (profileData | async)?.gender }} </p>
-<p style="color:rgb(92, 16, 136);"> Level: {{ (profileData | async)?.level }} </p>
-
+<p class= "pgender"> Gender: {{ (profileData | async)?.gender }} </p>
+</div>
+<div class="pdiv"> 
+<p class= "plevel" > Level: {{ (profileData | async)?.level }} </p>
+</div>
 </ion-content>
