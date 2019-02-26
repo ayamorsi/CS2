@@ -34,12 +34,15 @@ export class GradesPage implements OnInit {
 
   ngOnInit(): void {
     this.subjectarr = [
-      { val: 'تفاضل وتكامل 2 ', isChecked: false },
-      { val: 'معادلات تفاضليه عاديه', isChecked: false },
-      { val: 'نظريه احصائيه', isChecked: false },
-      { val: 'أساسيات برمجد هيكلية', isChecked: false },
-      { val: 'نظم قواعد بيانات', isChecked: false },
-      { val: 'بناء حاسب', isChecked: false }
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'معادلات تفاضليه عاديه', CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'نظريه احصائيه',        CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'أساسيات برمجد هيكلية', CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'نظم قواعد بيانات',     CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'بناء حاسب',            CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
     ];
     
     this.selectedArray = [];
@@ -55,6 +58,11 @@ export class GradesPage implements OnInit {
     for(let i = 0; i < this.subjectarr.length; i++){
        if (this.subjectarr[i].isChecked == true){
         this.selectedArray.push(this.subjectarr[i]);
+    }
+    for (let j =0; j < this.selectedArray.length; j++){
+      if (this.selectedArray.length > 5) {
+        this.subjectarr[i].isChecked == false 
+      }
     }
     
   }

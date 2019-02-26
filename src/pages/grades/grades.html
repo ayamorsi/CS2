@@ -5,17 +5,9 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content class="back"  padding>
-    <div class="mbsc-form-group">
-        <div class="mbsc-form-group-title">Category</div>
-         
-  <button ion-button (click)="Courses()" style="color: rgb(207, 32, 32)">Save</button>
+  
+    </ion-content>
 
-  <ion-list>
-  <ion-item *ngFor="let entry of subjectarr">
-    <ion-label>{{entry.val}}</ion-label>
-    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
-  </ion-item>
-</ion-list>
+
+ 

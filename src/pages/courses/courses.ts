@@ -1,36 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TimetablePage } from '../timetable/timetable';
 import {AngularFireDatabase} from  'angularfire2/database';
-import {AngularFireAuth} from 'angularfire2/auth'; 
+import {AngularFireAuth} from 'angularfire2/auth';
 import { courses } from '../../models/courses';
-import { AbstractControl} from '@angular/forms';
-/**
- * Generated class for the CoursesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TimetablePage} from '../timetable/timetable';
+import firebase from '../../../node_modules/firebase';
+import { Observable } from 'rxjs';
+import { AngularFireObject , AngularFireList} from  'angularfire2/database';
+
 
 @IonicPage()
 @Component({
   selector: 'page-courses',
   templateUrl: 'courses.html',
 })
-export class CoursesPage {
-  Courses = {} as courses;
-  //subject0: AbstractControl;
-  public form = [
-    { val: 'subject0', isChecked: true },
-  ];
-  constructor(public navCtrl: NavController, public navParams: NavParams ,private afAuth : AngularFireAuth ,private afDatabase:AngularFireDatabase, ) {
+export class CoursesPage implements OnInit {
+  profData: AngularFireList<courses>
+  profileData: Observable<any>
+  subjectarr: any [];
+  isChecked: any;
+  selectedArray : any [];
+  
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams ,
+    private afAuth : AngularFireAuth ,
+    private afDatabase:AngularFireDatabase
+  ) {
+    if (!firebase.apps.length) {
+      firebase.initializeApp({});
+   }
   }
-  courses(){
-    this.afAuth.authState.take(1).subscribe(auth =>{
-    this.afDatabase.object(`courses/${auth.uid}`).set(this.Courses)
-    .then(()=> this.navCtrl.push(TimetablePage))
-    })
+
+  ngOnInit(): void {
+    this.subjectarr = [
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'معادلات تفاضليه عاديه', CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'نظريه احصائيه',        CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'أساسيات برمجد هيكلية', CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'نظم قواعد بيانات',     CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'بناء حاسب',            CreditHours: '3' ,  Code:  '221ر', isChecked: false },
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
+      { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '221ر', isChecked: false }, 
+    ];
+    
+    this.selectedArray = [];
   }
   
   
+
+
+  Courses(){
+
+    for(let i = 0; i < this.subjectarr.length; i++){
+       if (this.subjectarr[i].isChecked == true){
+        this.selectedArray.push(this.subjectarr[i]);
+    }
+    for (let j =0; j < this.selectedArray.length; j++){
+      if (this.selectedArray.length > 5) {
+        this.subjectarr[i].isChecked == false 
+      }
+    }
+    
+  }
+      this.afAuth.authState.take(1).subscribe(auth =>{
+        this.afDatabase.list(`courses/${auth.uid}`).push(this.selectedArray)
+        .then(()=> this.navCtrl.push(TimetablePage))
+         })
+  }
 }
+
+  
+

@@ -9,7 +9,7 @@
 
 <ion-content   class="back" padding>
 
-    <table id="customers">
+    <table id="subjects"  >
 
         <tr >
           <th>Code</th>
@@ -18,17 +18,18 @@
           <th>choose</th>
 
         </tr>
-        </table>
 
-        <tr >
+        <tr *ngFor="let entry of subjectarr" >
             
-          <td>ر211</td>
-          <td>تفاضل وتكامل 2</td>
-          <td>3</td>
-          <ion-checkbox color="dark"> </ion-checkbox> 
+          <td>{{entry.val}}</td>
+          <td>{{entry.CreditHours}} </td>
+          <td>{{entry.Code}}</td>
+          <td>
+              <ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox>
+              </td>
  
         </tr>
-        <tr>
+        <!-- <tr>
           <td>ر213</td>
           <td>معادلات تفاضليه عاديه</td>
           <td>3</td>
@@ -323,8 +324,10 @@
                           <td>3</td>
                           <td><ion-checkbox color="dark" ></ion-checkbox></td>
                 
-                         </tr>
+                         </tr>-->
+                                 </table> 
+
 <br> <br>
-<button ion-button (click)="courses()" style="color: rgb(207, 32, 32)">Save</button>
+<button ion-button (click)="Courses()" style="color: rgb(207, 32, 32)">Save</button>
 
 </ion-content>
