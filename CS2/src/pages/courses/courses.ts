@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {AngularFireDatabase} from  'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { courses } from '../../models/courses';
@@ -25,7 +25,8 @@ export class CoursesPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams ,
     private afAuth : AngularFireAuth ,
-    private afDatabase:AngularFireDatabase
+    private afDatabase:AngularFireDatabase,
+    private alertCtrl: AlertController,
   ) {
     if (!firebase.apps.length) {
       firebase.initializeApp({});
@@ -53,22 +54,35 @@ export class CoursesPage implements OnInit {
 
   Courses(){
 
-    for(let i = 0; i < this.subjectarr.length; i++){
+    for(let i = 0; i < this.subjectarr.length; ++ i){
        if (this.subjectarr[i].isChecked == true){
-        this.selectedArray.push(this.subjectarr[i]);
-    }
-    for (let j =0; j < this.selectedArray.length; j++){
-      if (this.selectedArray.length > 5) {
-        this.subjectarr[i].isChecked == false 
+        if (this.selectedArray.length > 5)
+        {
+          this.alertCtrl.create(
+            {
+              title: 'you have exceed the limit of registered courses',
+              subTitle: 'Please Try again',
+              buttons: ['Dismiss']
+            }
+          ).present()
+        }
+        this.selectedArray.push( this.subjectarr[i]);  
       }
     }
+        
+
+
     
-  }
+  if (this.selectedArray.length <=5) {
       this.afAuth.authState.take(1).subscribe(auth =>{
-        this.afDatabase.list(`courses/${auth.uid}`).push(this.selectedArray)
-        .then(()=> this.navCtrl.push(TimetablePage))
+        this.afDatabase.object(`courses/${auth.uid}`).update(this.selectedArray)
+        .then(()=> this.navCtrl.setRoot(TimetablePage))
          })
   }
+}
+getUpdate(){
+
+}
 }
 
   

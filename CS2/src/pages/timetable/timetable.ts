@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
+import{courses} from '../../models/courses'
 
-/**
- * Generated class for the TimetablePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
+
 
 @IonicPage()
 @Component({
@@ -14,12 +16,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'timetable.html',
 })
 export class TimetablePage {
+  coursData: Observable<any>
+  corfData: AngularFireObject<courses>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams ,
+    private afDatabase:AngularFireDatabase,
+    private toast :ToastController,
+    private afAuth :AngularFireAuth,
+    ) {
+      if (!firebase.apps.length) {
+        firebase.initializeApp({});
+     }
   }
 
+  
+
+getDataFromFireBase(){
+
+  this.afAuth.authState.take(1).subscribe(data =>{
+    if (data && data.email && data.uid){
+    this.coursData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
+    this.corfData = this.afDatabase.object(`courses/${data.uid}`);
+    }
+
+  })
+  }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TimetablePage');
+    console.log('ionViewDidLoad TimetablePage'); 
+
   }
 
 }

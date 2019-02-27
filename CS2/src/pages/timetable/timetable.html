@@ -9,5 +9,21 @@
 
 
 <ion-content class="back"  padding>
+    <table id="subjects"  >
 
-</ion-content>
+        <tr >
+          <th>Code</th>
+          <th>Course name</th>
+          <th>credit hours</th>
+          <th>choose</th>
+
+        </tr>
+
+        <tr *ngFor="let select of subjectarr" >
+            
+          <td>{{ (coursData | async)?.val}}</td>
+          <td>{{ (coursData | async)?.CreditHours}} </td>
+          <td>{{ (coursData | async)?.Code}}</td>
+ 
+        </tr>
+    </table>

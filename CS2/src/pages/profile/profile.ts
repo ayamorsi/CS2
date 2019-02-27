@@ -26,8 +26,12 @@ export class ProfilePage {
 
  fullName;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , private afDatabase:AngularFireDatabase,
-    private toast :ToastController,private afAuth :AngularFireAuth,private camera: Camera ) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams , 
+    private afDatabase:AngularFireDatabase,
+    private toast :ToastController,
+    private afAuth :AngularFireAuth,
+    private camera: Camera ) {
 
       
       if (!firebase.apps.length) {
@@ -41,7 +45,7 @@ export class ProfilePage {
           if (data && data.email && data.uid){
             this.toast.create({
               message: ` Welcome to Cs_App, ${data.email}`,
-              duration: 3000
+              duration: 2000
             }).present(); 
 
           this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
@@ -51,35 +55,19 @@ export class ProfilePage {
           else{
             this.toast.create({
               message: ' could not find authentication details.',
-              duration: 3000
+              duration: 2000
             }).present();
           }
         })
       }
       
-      selectPhoto(sourceType:number) {
-        const options: CameraOptions = {
-          quality: 50,
-          destinationType: this.camera.DestinationType.DATA_URL,
-          encodingType: this.camera.EncodingType.JPEG,
-          mediaType: this.camera.MediaType.PICTURE,
-          correctOrientation: true,
-          sourceType:sourceType,
-        }
-    
-        this.camera.getPicture(options).then((imageData) => {
-          let base64Image = 'data:image/jpeg;base64,' + imageData;
-        }, (err) => {
-          // Handle error
-        });
-      }
       
   getDataFromFireBase(){
 
   this.afAuth.authState.take(1).subscribe(data =>{
     if (data && data.email && data.uid){
-    this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
-    this.profData = this.afDatabase.object(`profile/${data.uid}`);
+    this.profileData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
+    this.profData = this.afDatabase.object(`courses/${data.uid}`);
     }
     
   })

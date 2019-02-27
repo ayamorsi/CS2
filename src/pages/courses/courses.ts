@@ -7,6 +7,8 @@ import { TimetablePage} from '../timetable/timetable';
 import firebase from '../../../node_modules/firebase';
 import { Observable } from 'rxjs';
 import { AngularFireObject , AngularFireList} from  'angularfire2/database';
+import { AlertController } from 'ionic-angular';
+
 
 
 @IonicPage()
@@ -18,12 +20,14 @@ export class CoursesPage implements OnInit {
   subjectarr: any [];
   isChecked: any;
   selectedArray : any [];
+ 
   
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams ,
     private afAuth : AngularFireAuth ,
-    private afDatabase:AngularFireDatabase
+    private afDatabase:AngularFireDatabase,
+    private alertCtrl: AlertController,
   ) {
     if (!firebase.apps.length) {
       firebase.initializeApp({});
@@ -54,12 +58,24 @@ export class CoursesPage implements OnInit {
     for(let i = 0; i < this.subjectarr.length; i++){
        if (this.subjectarr[i].isChecked == true){
         this.selectedArray.push(this.subjectarr[i]);
+        if(this.subjectarr.length > 5){
+          this.alertCtrl.create(
+            {
+              title: 'Please Enter Email and Password',
+              subTitle: 'The Email or Password are Empty',
+              buttons: ['Dismiss']
+            }
+          ).present()
+      
+        }
     }
-    // for (let j =0; j < this.selectedArray.length; j++){
-    //   if (this.selectedArray.length > 5) {
-    //     this.subjectarr[i].isChecked == false 
-    //   }
-    // }
+
+    //  for (let j =0; j < this.selectedArray.length; j++){
+    // if (this.selectedArray.length > 5) {
+    //  this.subjectarr[i].isChecked == false 
+    //  }
+    //  console.log(this.Courses)
+    // // }
     
   }
       this.afAuth.authState.take(1).subscribe(auth =>{
