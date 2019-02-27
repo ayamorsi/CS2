@@ -1,0 +1,333 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title>courses</ion-title>
+  </ion-navbar > 
+
+</ion-header>
+
+
+<ion-content   class="back" padding>
+
+    <table id="subjects"  >
+
+        <tr >
+          <th>Code</th>
+          <th>Course name</th>
+          <th>credit hours</th>
+          <th>choose</th>
+
+        </tr>
+
+        <tr *ngFor="let entry of subjectarr" >
+            
+          <td>{{entry.val}}</td>
+          <td>{{entry.CreditHours}} </td>
+          <td>{{entry.Code}}</td>
+          <td>
+              <ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox>
+              </td>
+ 
+        </tr>
+        <!-- <tr>
+          <td>ر213</td>
+          <td>معادلات تفاضليه عاديه</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark"  ></ion-checkbox></td>
+        </tr>
+        <tr>
+          <td>ر243</td>
+          <td>نظريه احصائيه</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+        </tr>
+        <tr>
+          <td>ر261</td>
+          <td>أساسيات برمجة
+                          هيكلية</td>
+            
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+        </tr>
+        <tr>
+          <td>263ر</td>
+          <td> نظم قواعد بيانات </td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+
+        </tr>
+        <tr>
+          <td>ر265</td>
+          <td> بناء حاسب </td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+
+        </tr>
+        <tr>
+          <td>ر261</td>
+          <td>تحليل عددى 1</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+
+        </tr>
+        <tr>
+          <td>242ر</td>
+          <td>نظريه الاحتمالات 1</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+
+        </tr>
+        <tr>
+          <td>ر262</td>
+          <td>برمجة شيئية</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+
+        </tr>
+        <tr>
+          <td>ر264</td>
+          <td>شبكات حاسب 1</td>
+          <td>3</td>
+          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+        </tr>
+        <tr>
+            <td>ر266</td>
+            <td>مقدمة نظم معلومات</td>
+            <td>3</td>
+            <td><ion-checkbox color="dark" ></ion-checkbox></td>
+  
+          </tr>
+
+          <tr>
+              <td>ر212</td>
+              <td>جبر خطى 1</td>
+              <td>3</td>
+              <td><ion-checkbox color="dark" ></ion-checkbox></td>
+    
+            </tr>
+
+            <tr>
+                <td>ر268</td>
+                <td>نظم قواعد بيانات متقدمة</td>
+                <td>3</td>
+                <td><ion-checkbox color="dark" ></ion-checkbox></td>
+      
+              </tr>
+
+              <tr>
+                  <td>ر311</td>
+                  <td>جبر مجرد 1</td>
+                  <td>3</td>
+                  <td><ion-checkbox color="dark" ></ion-checkbox></td>
+        
+                </tr>
+                <tr>
+                    <td>ر361</td>
+                    <td>تصميم وتحليل خوارزميات</td>
+                    <td>3</td>
+                    <td><ion-checkbox color="dark" ></ion-checkbox></td>
+          
+                  </tr>
+
+                  <tr>
+                      <td>ر363</td>
+                      <td>برمجة ويب</td>
+                      <td>3</td>
+                      <td><ion-checkbox color="dark" ></ion-checkbox></td>
+            
+                    </tr>
+                    <tr>
+                        <td>ر365</td>
+                        <td>نظم تشغيل</td>
+                        <td>3</td>
+                        <td><ion-checkbox color="dark" ></ion-checkbox></td>
+              
+                      </tr>
+                      <tr>
+                          <td>ر367</td>
+                          <td>شبكات حاسب 2</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                         <tr>
+                          <td>315ر</td>
+                          <td>نظريه معادلات تفاضليه عاديه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>319ر</td>
+                          <td>تحليل عددي2</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>362ر</td>
+                          <td>نظم تشغيل متقدم</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>364ر</td>
+                          <td>رسومات حاسب</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>366ر</td>
+                          <td>مشروع برمجة ويب</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>368ر</td>
+                          <td>نظريه الرسومات1</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>372ر</td>
+                          <td>البرمجة المنطقيه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>312ر</td>
+                          <td>جبر مجرد 2</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>318ر</td>
+                          <td>بحوث عمليات</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>322ر</td>
+                          <td>طرق رياضيه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>324ر</td>
+                          <td>نظريه الاعداد</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>461ر</td>
+                          <td>لغات صوريه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>463ر</td>
+                          <td>ذكاء اصطناعى</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>467ر</td>
+                          <td>المعالجات المتوازيه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>469ر</td>
+                          <td>معالجة الاشارات</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>471ر</td>
+                          <td>رسومات حاسب متقدم</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>417ر</td>
+                          <td>نظريه التشفير</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>465ر</td>
+                          <td>معالجة الصور</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>462ر</td>
+                          <td>الشبكات العصبيه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+
+                        <tr>
+                          <td>464ر</td>
+                          <td>المترجمات</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr> 
+                        <tr>
+                          <td>466ر</td>
+                          <td> الشبكات اللاسلكيه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>  
+                        <tr>
+                          <td>468ر</td>
+                          <td> اداره الشبكات</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                      </tr>
+                      <tr>
+                          <td>472ر</td>
+                          <td>>قواعد بيانات متقدمه</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                        </tr>
+                        <tr>
+                          <td>474ر</td>
+                          <td>ذكاء اصطناعى متقدم</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                    </tr>
+                         <tr>
+                          <td>476ر</td>
+                          <td>تحليل وتنظيم النظم</td>
+                          <td>3</td>
+                          <td><ion-checkbox color="dark" ></ion-checkbox></td>
+                
+                         </tr>-->
+                                 </table> 
+
+<br> <br>
+<button ion-button (click)="Courses()" style="color: rgb(207, 32, 32)">Save</button>
+
+</ion-content>
