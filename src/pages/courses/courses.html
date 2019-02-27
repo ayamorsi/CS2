@@ -20,10 +20,11 @@
         </tr>
 
         <tr *ngFor="let entry of subjectarr" >
-            
+         
+          <td>{{entry.Code}}</td>
           <td>{{entry.val}}</td>
           <td>{{entry.CreditHours}} </td>
-          <td>{{entry.Code}}</td>
+          
           <td>
               <ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox>
               </td>
