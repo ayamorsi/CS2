@@ -31,5 +31,7 @@ export class GradesPage  {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GradesPage');
   }
-
+ 
+  
 }
+

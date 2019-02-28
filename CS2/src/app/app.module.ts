@@ -13,9 +13,6 @@ import { TimetablePage } from '../pages/timetable/timetable';
 import { GradesPage } from '../pages/grades/grades';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CreateprofilePage } from '../pages/createprofile/createprofile';
-
-//import { FileTransfer } from '@ionic-native/file-transfer';
-//import { File } from '@ionic-native/file';
 import{ AngularFireModule} from 'angularfire2';
 import {FIRBASE_cREDENTIALS} from './firbase.credentials'
 import {AngularFireDatabaseModule} from  'angularfire2/database';

@@ -37,8 +37,8 @@ getDataFromFireBase(){
 
   this.afAuth.authState.take(1).subscribe(data =>{
     if (data && data.email && data.uid){
-    this.coursData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
-    this.corfData = this.afDatabase.object(`courses/${data.uid}`);
+     this.afDatabase.object(`timetable/${data.uid}`).valueChanges();
+    this.afDatabase.object(`timetable/${data.uid}`);
     }
 
   })

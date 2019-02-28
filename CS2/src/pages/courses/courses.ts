@@ -64,7 +64,8 @@ export class CoursesPage implements OnInit {
               subTitle: 'Please Try again',
               buttons: ['Dismiss']
             }
-          ).present()
+          ).present() 
+          this.selectedArray.length = 0; 
         }
         this.selectedArray.push( this.subjectarr[i]);  
       }
@@ -75,14 +76,12 @@ export class CoursesPage implements OnInit {
     
   if (this.selectedArray.length <=5) {
       this.afAuth.authState.take(1).subscribe(auth =>{
-        this.afDatabase.object(`courses/${auth.uid}`).update(this.selectedArray)
+        this.afDatabase.object(`courses/${auth.uid}`).set(this.selectedArray)
         .then(()=> this.navCtrl.setRoot(TimetablePage))
          })
   }
 }
-getUpdate(){
 
-}
 }
 
   
